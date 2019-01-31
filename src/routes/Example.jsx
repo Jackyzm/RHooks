@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import { Link, withRouter } from 'react-router-dom';
-import { connect } from '@/Rhooks';
+import { Link } from 'react-router-dom';
+import { connect } from '@/RHooks';
 
 const Example = props => {
 	console.log(props);
@@ -17,7 +17,6 @@ const Example = props => {
 			<button
 				onClick={() => {
 					dispatch({ type: 'increment' });
-					// setCount(count + 1);
 				}}
 			>
 				Click me
@@ -27,7 +26,6 @@ const Example = props => {
 			</p>
 			<button
 				onClick={() => {
-					// dispatch({ type: 'increment' });
 					setForm({ ...form, user: 'user' });
 				}}
 			>
@@ -38,9 +36,12 @@ const Example = props => {
 	);
 };
 
-export default connect(store => {
-	return {
-		count: store.example.state.count,
-		dispatch: store.example.dispatch,
-	};
-})(withRouter(Example));
+export default connect(
+	['example'],
+	store => {
+		return {
+			count: store.example.state.count,
+			dispatch: store.example.dispatch,
+		};
+	}
+)(Example);

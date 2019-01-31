@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { connect } from '@/Rhooks';
+import { connect } from '@/RHooks';
 
 const Home = props => {
 	// Declare a new state variable, which we'll call "count"
@@ -31,9 +31,12 @@ const Home = props => {
 	);
 };
 
-export default connect(store => {
-	return {
-		count: store.example.state.count,
-		dispatch: store.example.dispatch,
-	};
-})(Home);
+export default connect(
+	['example'],
+	store => {
+		return {
+			count: store.example.state.count,
+			dispatch: store.example.dispatch,
+		};
+	}
+)(Home);
