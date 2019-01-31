@@ -1,9 +1,10 @@
 import React, { useReducer } from 'react';
+import cloneDeep from 'lodash/cloneDeep';
 
 const connect = (initArr, getStore) => {
 	const WrappedComponent = Container => {
 		const Component = () => {
-			const store = window.RHooks;
+			const store = cloneDeep(window.RHooks);
 			// eslint-disable-next-line
 			initArr.map(item => {
 				const [state, dispatch] = useReducer(store[item].reducer, store[item].state);
