@@ -7,6 +7,7 @@ import './App.css';
 const Example = lazy(() => import('./routes/Example'));
 const Home = lazy(() => import('./routes/Home'));
 const Test = lazy(() => import('./routes/Test'));
+const Effect = lazy(() => import('./routes/Effect'));
 
 const App = () => {
 	// const store = createStore(reducers);
@@ -18,6 +19,7 @@ const App = () => {
 						<Route path="/" exact component={() => <Example />} />
 						<Route path="/home" exact component={() => <Home />} />
 						<Route path="/test" exact component={() => <Test />} />
+						<Route path="/effect" exact component={() => <Effect />} />
 					</Suspense>
 				</Switch>
 			</Provider>
