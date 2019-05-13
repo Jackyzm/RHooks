@@ -1,6 +1,6 @@
-import React, { useState, useCallback } from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { useSelector, useDispatch } from 'react-redux';
+import { useSelector, useActions } from 'react-redux';
 import { increment } from '@/actions/example';
 
 const Example = () => {
@@ -12,20 +12,16 @@ const Example = () => {
 
   const count = useSelector(state => state.example.count);
 
-  const dispatch = useDispatch();
-
-  const incrementAction = useCallback(() => dispatch(increment(form)));
+  const incrementAction = useActions(increment); // success
+  // const { incrementAction } = useActions({ incrementAction: increment }); // success
+  // const [incrementAction] = useActions([increment]); // success
 
   return (
     <div>
       <p>Example</p>
       <p>{count}</p>
       <p>You clicked {count} times</p>
-      <button onClick={() => dispatch(increment(form))}>Click me</button>
-      <br />
-      <button onClick={() => increment(form)(dispatch)}>Click me</button>
-      <br />
-      <button onClick={() => incrementAction()}>Click me</button>
+      <button onClick={() => incrementAction(form)}>Click me</button>
       <p>
         {user} | {pwd}
       </p>
