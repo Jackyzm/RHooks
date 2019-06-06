@@ -1,1 +1,1 @@
-depend react-redux@7.1.0-alpha.4
+depend react-redux@7.1.0-rc.1
