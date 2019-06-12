@@ -8,6 +8,7 @@ const Example = () => {
   // Declare a new state variable, which we'll call "count"
   // const [count, setCount] = useState(1);
   const [form, setForm] = useState({ user: 'admin', pwd: '111111' });
+  
   const { user, pwd } = form;
 
   const count = useSelector(state => state.example.count);
